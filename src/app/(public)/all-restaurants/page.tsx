@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import React from "react";
 import AllRestaurantsContainer from "./_components/AllRestaurantsContainer";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 const AllRestaurantsPage = () => {
   return (
     <Container className="page-padding">
-      <AllRestaurantsContainer></AllRestaurantsContainer>
+      <Suspense fallback={null}><AllRestaurantsContainer></AllRestaurantsContainer></Suspense>
     </Container>
   );
 };

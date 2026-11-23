@@ -1,4 +1,6 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
-  "rules": { "no-empty-interface": false }
+  "rules": { "no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn" }
 }

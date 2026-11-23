@@ -22,13 +22,20 @@ const authSlice = createSlice({
       state.user = user;
       state.token = token;
       // set cookie for middleware access
-      Cookies.set("userAccessToken", token);
+      // (must stay JS-readable for the Authorization header, so it can't be httpOnly)
+      Cookies.set("userAccessToken", token, {
+        path: "/",
+        sameSite: "lax",
+        secure:
+          typeof window !== "undefined" &&
+          window.location.protocol === "https:",
+      });
     },
     logOut: (state) => {
       state.user = null;
       state.token = null;
       // Remove token for cookies
-      Cookies.remove("userAccessToken");
+      Cookies.remove("userAccessToken", { path: "/" });
       signOut();
     }
   }

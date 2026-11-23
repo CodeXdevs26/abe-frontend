@@ -1,7 +1,7 @@
 "use client"
 import AboutUsSkeleton from "@/components/skeleton/AboutUsSkeleton";
 import { useGetSettingsQuery } from "@/redux/apis/settingsApi";
-import ReactHtmlParser from "react-html-parser";
+import SafeHtml from "@/components/shared/SafeHtml";
 
 const PrivacyPolicyContainer = () => {
   const { data, isLoading } = useGetSettingsQuery("");
@@ -9,7 +9,7 @@ const PrivacyPolicyContainer = () => {
   return isLoading ? (
     <AboutUsSkeleton />
   ) : (
-    <div>{ReactHtmlParser(privacy)}</div>
+    <div><SafeHtml html={privacy} /></div>
   );
 };
 

@@ -54,7 +54,10 @@ const BillingInfoContainer = () => {
   const params = useSearchParams();
   const coords = params?.get("coords");
   const router = useRouter();
-  const shippingLocation = localStorage.getItem("shippingLocation");
+  const shippingLocation =
+    typeof window !== "undefined"
+      ? localStorage.getItem("shippingLocation")
+      : null;
   const [address, setAddress] = useState(shippingLocation || "");
 
   const [latitude, setLatitude] = useState(Number(coords?.split(",")[1]) || 0);
@@ -77,7 +80,7 @@ const BillingInfoContainer = () => {
   }, [carts]);
 
   useEffect(() => {
-    if (window !== undefined && longitude !== 0 && latitude !== 0) {
+    if (longitude !== 0 && latitude !== 0) {
       localStorage.setItem("shippingLocation", address);
       localStorage.setItem("shippingCoords", `${longitude},${latitude}`);
 
@@ -89,7 +92,7 @@ const BillingInfoContainer = () => {
       setAddress(shippingLocation || "");
       router.push(`/checkout?coords=${shippingCoords}`);
     }
-  }, [window, longitude, latitude, address]);
+  }, [longitude, latitude, address]);
 
   const subTotal = Number(totalPrice) + Number(shippingFee);
   const discount = 0;

@@ -32,7 +32,6 @@ const GoogleMapContainer: React.FC<GoogleMapContainerProps> = ({
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const searchInputRef = useRef<google.maps.places.SearchBox | null>(null);
 
-  console.log('process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY', process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string,
     libraries: ["places"],

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import CartContainer from "./_components/CartContainer";
 import Container from "@/components/ui/container";
 
@@ -13,7 +14,9 @@ const CartPage = () => {
       <h1 className="text-primary-black lg:text-4xl text-2xl font-bold">
         My Shopping Cart
       </h1>
-      <CartContainer />
+      <Suspense fallback={null}>
+        <CartContainer />
+      </Suspense>
     </Container>
   );
 };

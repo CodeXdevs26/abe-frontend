@@ -30,7 +30,7 @@ const CouponContainer = () => {
           exit="exit"
         >
           {Array.from({ length: 3 }).map((_, i) => (
-            <motion.div variants={childrenVariants}>
+            <motion.div key={i} variants={childrenVariants}>
               <CouponCard data={couponData}></CouponCard>
             </motion.div>
           ))}

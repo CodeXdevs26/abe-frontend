@@ -27,6 +27,7 @@ import { useSession, signIn } from "next-auth/react";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { setUser } from "@/redux/slices/auth/authSlice";
 import getUserByToken from "@/utils/getUserByToken";
+import getSafeRedirectPath from "@/utils/getSafeRedirectPath";
 import { toast } from "sonner";
 
 // Define form data types
@@ -39,9 +40,10 @@ interface FormData {
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [pathname, setPathname] = useState("");
-  const redirectUrl = pathname.includes("redirect=")
-    ? `${pathname.split("redirect=")[1]}`
-    : "/user/profile";
+  const redirectUrl = getSafeRedirectPath(
+    pathname.includes("redirect=") ? pathname.split("redirect=")[1] : null,
+    "/user/profile",
+  );
   const { data: session } = useSession();
   const [googleLogin] = useGoogleLoginMutation();
   const dispatch = useAppDispatch();

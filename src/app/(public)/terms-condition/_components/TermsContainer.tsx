@@ -2,7 +2,7 @@
 import AboutUsSkeleton from "@/components/skeleton/AboutUsSkeleton";
 import { useGetSettingsQuery } from "@/redux/apis/settingsApi";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+import SafeHtml from "@/components/shared/SafeHtml";
 
 const TermsContainer = () => {
   const { data, isLoading } = useGetSettingsQuery("");
@@ -10,7 +10,7 @@ const TermsContainer = () => {
   return isLoading ? (
     <AboutUsSkeleton />
   ) : (
-    <div>{ReactHtmlParser(terms)}</div>
+    <div><SafeHtml html={terms} /></div>
   );
 };
 

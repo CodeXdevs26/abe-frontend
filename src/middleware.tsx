@@ -38,5 +38,13 @@ export function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/user/:path*", "/cart", "/sign-in"],
+  // NOTE: this is a UX gate only (the JWT is decoded, not signature-verified);
+  // the backend must authorize every API request itself.
+  matcher: [
+    "/user/:path*",
+    "/cart",
+    "/checkout/:path*",
+    "/review/:path*",
+    "/sign-in",
+  ],
 };

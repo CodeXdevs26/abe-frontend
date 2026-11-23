@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Container from "@/components/ui/container";
 import SetNewPasswordFrom from "./_components/SetNewPasswordFrom";
 
@@ -10,7 +11,7 @@ export const metadata = {
 const SetNewPasswordPassword = () => {
   return (
     <Container className="flex-center min-h-[calc(100vh-200px)] mt-2">
-      <SetNewPasswordFrom></SetNewPasswordFrom>
+      <Suspense fallback={null}><SetNewPasswordFrom></SetNewPasswordFrom></Suspense>
     </Container>
   );
 };

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Container from "@/components/ui/container";
 import VerifyOtpForm from "./_componets/VerifyOtpFrom";
 
@@ -8,7 +9,7 @@ export const metadata = {
 const VerifyOtpPage = () => {
   return (
     <Container className="flex-center min-h-[calc(100vh-200px)] mt-2">
-      <VerifyOtpForm></VerifyOtpForm>
+      <Suspense fallback={null}><VerifyOtpForm></VerifyOtpForm></Suspense>
     </Container>
   );
 };

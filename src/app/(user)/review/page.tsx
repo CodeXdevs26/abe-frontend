@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Container from "@/components/ui/container";
 import ProductReviewContainer from "./_components/ProductReviewContainer";
 
@@ -9,7 +10,7 @@ export const metadata = {
 const ReviewPage = () => {
   return (
     <Container className="page-padding">
-      <ProductReviewContainer></ProductReviewContainer>
+      <Suspense fallback={null}><ProductReviewContainer></ProductReviewContainer></Suspense>
     </Container>
   );
 };

@@ -45,7 +45,10 @@ const CartContainer = () => {
   const [increaseQuantity] = useIncreaseCartQuantityMutation();
   const [decreaseQuantity] = useDecreaseCartQuantityMutation();
   const [deleteCart] = useDeleteCartMutation();
-  const shippingLocation = localStorage.getItem("shippingLocation");
+  const shippingLocation =
+    typeof window !== "undefined"
+      ? localStorage.getItem("shippingLocation")
+      : null;
   const [address, setAddress] = useState(shippingLocation || "");
 
   const coords = useSearchParams().get("coords");

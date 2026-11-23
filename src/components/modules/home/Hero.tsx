@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import heroImage from "@/assets/image/hero/hero_image.png";
 import Image from "next/image";
 import line from "@/assets/image/hero/waterMark.png";
@@ -42,7 +43,7 @@ const Hero = () => {
             table location or view.
           </motion.p>
           <motion.div variants={childrenVariants}>
-            <HeroSearch></HeroSearch>
+            <Suspense fallback={null}><HeroSearch></HeroSearch></Suspense>
           </motion.div>
         </motion.div>
       </motion.div>
